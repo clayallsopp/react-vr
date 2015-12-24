@@ -4,7 +4,6 @@ var path    = require('path');
 module.exports = {
   devServer: {
     historyApiFallback: true,
-    hot: true,
     inline: true,
     progress: true,
     port: 8080
@@ -24,8 +23,5 @@ module.exports = {
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
     ]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ]
+  }
 };
