@@ -72,12 +72,9 @@ class Camera extends React.Component {
     if (keys[83]) { velocity[wsAxis] += wsSign * acceleration * delta; } // Down
 
     let movementVector = this.getMovementVector(delta, velocity, this.state.cameraRotation);
-    //console.log(movementVector);
-    // console.log(this.state.keys);
 
     let cameraPosition = this.state.cameraPosition.clone();
     cameraPosition.add(movementVector);
-    console.log(cameraPosition);
     this.setState({
       cameraPosition : cameraPosition
     });

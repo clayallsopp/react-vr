@@ -54,11 +54,11 @@ class App extends React.Component {
     this.interval = setInterval(() => {
       let direction = this.state.direction;
       let offset = 10 * direction;
-      let position = this.state.cupcakePosition.clone().setX(this.state.cupcakePosition.x + offset);
-      if (this.state.cupcakePosition.x > 500) {
+      let position = this.state.cupcakePosition.clone().setZ(this.state.cupcakePosition.z + offset);
+      if (this.state.cupcakePosition.z > 500) {
         direction = -1;
       }
-      else if (this.state.cupcakePosition.x < 0) {
+      else if (this.state.cupcakePosition.z < 0) {
         direction = 1;
       }
       this.setState({
@@ -83,8 +83,10 @@ class App extends React.Component {
     };
     return <ReactVR.Scene renderVR={this.state.renderVR} width={w} height={h} camera='maincamera'>
       <ReactVR.KeyboardCamera width={w} height={h} name='maincamera' />
-      <Cupcake { ...cupcakeProps } />
-      <Cupcake { ...cupcakeProps } position={ this.state.cupcakePosition } />
+      <ReactTHREE.AmbientLight color={0xffffff} />
+      <ReactTHREE.PointLight />
+      <ReactVR.Sphere { ...cupcakeProps } />
+      <ReactVR.Sphere { ...cupcakeProps } position={ this.state.cupcakePosition } />
     </ReactVR.Scene>;
   }
 }
